@@ -1,0 +1,23 @@
+{
+    "files.associations": {
+        "signal.h": "c",
+        "array": "c",
+        "deque": "c",
+        "unordered_map": "c",
+        "vector": "c",
+        "initializer_list": "c",
+        "cmath": "c",
+        "trace.h": "c",
+        "cstdlib": "c",
+        "typeinfo": "c",
+        "cerrno": "c",
+        "fstream": "c",
+        "functional": "c",
+        "type_traits": "c",
+        "lora_pkt_fwd.h": "c",
+        "delay_queue.h": "c",
+        "common.h": "c",
+        "task_queue.h": "c",
+        "data_queue.h": "c"
+    }
+}

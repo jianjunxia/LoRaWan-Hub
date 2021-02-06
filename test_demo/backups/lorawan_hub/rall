@@ -1,0 +1,55 @@
+#!/bin/sh
+
+
+RESULT_CONF=$(ps | grep "lora_[p]kt_conf")   
+RESULT_FWD=$(ps | grep "lora_[p]kt_fwd")   
+RESULT_SERVER=$(ps | grep "lora_[p]kt_server")
+
+
+
+RESULT_CONF=$(ps | grep "lora_[p]kt_conf")
+if [ -z "${RESULT_CONF}" ]; then
+	
+	echo "No lora_pkt_conf process..."
+else
+    
+	echo $RESULT_CONF | awk '{print $1}' | xargs kill -9
+	echo "killed lora_pkt_conf process!"
+fi
+
+sleep 1
+
+RESULT_FWD=$(ps | grep "lora_[p]kt_fwd")
+if [ -z "${RESULT_FWD}" ]; then                   
+                                                   
+        echo "No lora_pkt_fwd process..."         
+else                                               
+                                                       
+        echo $RESULT_FWD | awk '{print $1}' | xargs kill -9
+        echo "killed lora_pkt_fwd process!"
+fi
+
+sleep 1
+
+RESULT_SERVER=$(ps | grep "lora_[p]kt_server")
+if [ -z "${RESULT_SERVER}" ]; then                   
+                                                   
+        echo "No lora_pkt_server process..."         
+else                                               
+                                                       
+        echo $RESULT_SERVER | awk '{print $1}' | xargs kill -9
+        echo "killed lora_pkt_server process!"
+fi
+
+chdir /lorawan/lorawan_hub
+
+#sleep 5s
+#./start4Gmodule &
+
+#sleep 30s
+#./read_imsi &
+
+sleep 5s
+./reset_pkt_fwd_A.sh start;
+./lora_pkt_conf
+

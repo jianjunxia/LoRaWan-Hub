@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1520437211 source:c:\users\lenovo\desktop\joinrequest\source\aes.c
+	<string.h>
+	<intrin.h>
+	<stdlib.h>
+	<stdint.h>
+	"aes.h"
+
+1520437211 c:\users\lenovo\desktop\joinrequest\include\aes.h
+	<stdint.h>
+
+1520437211 source:c:\users\lenovo\desktop\joinrequest\source\cmac.c
+	<stdint.h>
+	"aes.h"
+	"cmac.h"
+	"utilities.h"
+
+1520437211 c:\users\lenovo\desktop\joinrequest\include\cmac.h
+	"aes.h"
+
+1520437211 c:\users\lenovo\desktop\joinrequest\include\utilities.h
+	<stdint.h>
+
+1520437211 source:c:\users\lenovo\desktop\joinrequest\source\loramaccrypto.c
+	"utilities.h"
+	"aes.h"
+	"cmac.h"
+	"LoRaMacCrypto.h"
+
+1520437211 c:\users\lenovo\desktop\joinrequest\include\loramaccrypto.h
+	<stdint.h>
+
+1520437211 source:c:\users\lenovo\desktop\joinrequest\source\utilities.c
+	<stdlib.h>
+	<stdio.h>
+	"utilities.h"
+
+1557197306 source:c:\users\lenovo\desktop\joinrequest\main.c
+	<stdio.h>
+	<stdlib.h>
+	"aes.h"
+	"cmac.h"
+	"utilities.h"
+

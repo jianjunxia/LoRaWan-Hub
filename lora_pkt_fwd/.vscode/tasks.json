@@ -1,0 +1,16 @@
+{
+    "version": "0.1.0",
+    //"command": "gcc",  // 编译C程序。可以换成 echo 来调试命令参数
+    //"isShellCommand": true,
+    "type": "shell",  
+    "tasks": 
+    [
+        {
+            "taskName": "build",  // 任务名
+            "command": "make",
+            "args":[],
+                     
+        }
+    
+    ]
+}

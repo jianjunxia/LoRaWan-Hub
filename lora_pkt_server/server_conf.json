@@ -1,0 +1,11 @@
+{
+    "Server_conf":
+    {   "server_ip":"192.168.1.103",
+        "server_port":8888
+    },
+    "Communicate_conf":
+    {
+        "communicate_ip":"10.200.0.37",
+        "communicate_port":8080
+    }
+}

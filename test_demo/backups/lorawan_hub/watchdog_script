@@ -1,0 +1,84 @@
+#!/bin/sh
+
+RESULT_CONF=$(ps | grep "lora_[p]kt_conf")
+RESULT_FWD=$(ps | grep "lora_[p]kt_fwd")
+RESULT_SERVER=$(ps | grep "lora_[p]kt_server")
+
+
+##Determines whether the folder exists
+
+if [ -d /lorawan/lorawan_hub/log ];then
+
+	echo "The log folder is  exists"
+
+else
+	echo "The log folder is not exists"
+	mkdir -p /lorawan/lorawan_hub/log
+fi
+
+Date=`date "+%y-%m-%d %H:%M:%S"`
+
+
+while true
+
+do
+
+	Date=`date "+%y-%m-%d %H:%M:%S"`
+	
+	##check lora_pkt_conf process status
+	RESULT_CONF=$(ps | grep "lora_[p]kt_conf")
+	if [ -z "${RESULT_CONF}" ]; then
+	
+		echo "lora_conf process is dead, restart it !"	
+		echo "${Date} Error! lora_conf process is dead, Restart it!" >> /lorawan/lorawan_hub/log/watchdog_log
+		
+		chdir /lorawan/lorawan_hub
+		./rall &
+
+	else
+		echo "lora_pkt_conf process is running...."
+		echo "${Date} lora_pkt_conf process is running....." >> /lorawan/lorawan_hub/log/watchdog_log		
+	fi
+	
+	sleep 5
+
+	##check lora_pkt_fwd process status  
+	RESULT_FWD=$(ps | grep "lora_[p]kt_fwd")
+	if [ -z "${RESULT_FWD}" ]; then                                                                                                                                                                            
+        
+		echo "lora_pkt_fwd process is dead, restart it !"                                                                                                                                                                                                                                                                                                                                                  
+		echo "${Date} Error! lora_pkt_fwd process is dead, Restart it!" >> /lorawan/lorawan_hub/log/watchdog_log
+        	
+		chdir /lorawan/lorawan_hub                                                                                                                                                                          
+        	./reset_pkt_fwd_A.sh start;
+		./lora_pkt_fwd &                                                                                                                                                                                     
+                                                                                                                                                                                                            
+	else                                                                                                                                                                                                        
+        	echo "lora_pkt_fwd process is running...."                                                                                                                                                             
+		echo "${Date} lora_pkt_fwd process is running....." >> /lorawan/lorawan_hub/log/watchdog_log                                                                                                                                                                                                             
+	fi  
+	
+	sleep 5
+
+	##check lora_pkt_server process status
+	RESULT_SERVER=$(ps | grep "lora_[p]kt_server")	
+	if [ -z "${RESULT_SERVER}" ]; then                                                                                                                                                                            
+        
+		echo "lora_pkt_server process is dead, restart it !"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+  		echo "${Date} Error! lora_pkt_server process is dead, Restart it!" >> /lorawan/lorawan_hub/log/watchdog_log
+        	
+		 chdir /lorawan/lorawan_hub
+		./lora_pkt_server &                                                                                                                                                                                    
+                                                                                                                                                                                                            
+	else                                                                                                                                                                                                        
+        	echo "lora_pkt_server process is running...."                                                                                                                                                             
+		echo "${Date} lora_pkt_server process is running....." >> /lorawan/lorawan_hub/log/watchdog_log  		                
+                                                                                                                                                                                            
+	fi  
+
+	
+	sleep 600
+	echo
+
+done		
+

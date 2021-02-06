@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "signal.h": "c",
+        "time.h": "c",
+        "unistd.h": "c",
+        "stdint.h": "c",
+        "string.h": "c",
+        "region.h": "c",
+        "common.h": "c"
+    }
+}

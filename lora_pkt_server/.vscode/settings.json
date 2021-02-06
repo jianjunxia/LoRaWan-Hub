@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "lora_pkt_server.h": "c",
+        "cstdlib": "c",
+        "common.h": "c",
+        "fstream": "c",
+        "array": "c",
+        "message_management.h": "c",
+        "region.h": "c",
+        "socket.h": "c",
+        "ifaddrs.h": "c",
+        "inet.h": "c",
+        "md5.h": "c",
+        "reboot.h": "c"
+    }
+}
